@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  overflow-x: hidden !important;
+  height: 100vh;
+  letter-spacing: 0.5px;
+}
+
+section {
+  overflow-x: hidden;
+}
+
+button,
+a {
+  cursor: pointer;
+
+  * {
+    pointer-events: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.5px;
+}

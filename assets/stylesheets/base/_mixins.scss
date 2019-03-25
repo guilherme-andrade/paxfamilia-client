@@ -1,0 +1,63 @@
+@mixin lines($number) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $number;
+  line-height: $line-height-base;
+  max-height: $line-height-base * $number * $font-size-base;
+}
+
+
+@mixin responsive-square {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  &::before {
+    content: '';
+    position: relative;
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+
+@mixin overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
+// @mixin sliding-menu($direction, $height) {
+//   position: fixed;
+//   height: calc(#{$height} - #{$navbar-height});
+//   width: 100vw;
+//   z-index: 11;
+//   padding: 0.5em 1rem;
+//   overflow-y: scroll;
+
+//   @if $direction == 'left' or $direction == 'right' {
+//     #{$direction}: -100vw;
+//     top: $navbar-height;
+//     transition: #{$direction} 0.2s ease-in-out;
+//   }
+
+//   @if $direction == 'top' or $direction == 'bottom' {
+//     #{$direction}: calc(#{$navbar-height} - #{$height});
+//     left: 0;
+//     transition: #{$direction} 0.3s ease-in-out;
+//   }
+
+//   > * {
+//     z-index: 2;
+//   }
+
+//   &.expanded {
+//     #{$direction}: 0;
+//     display: block;
+//   }
+// }

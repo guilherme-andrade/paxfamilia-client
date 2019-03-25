@@ -1,0 +1,165 @@
+.object-contained {
+  object-fit: contain;
+  object-position: center;
+}
+
+.object-covering {
+  object-fit: cover;
+  object-position: center;
+}
+
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+.responsive-square {
+  @include responsive-square;
+}
+
+// found in vendor/bootstrap/variables
+@each $size in $absolute-sizes {
+  $unit: nth($size, 1);
+  $value: nth($size, 2);
+
+  .max-#{$unit}-lines:not(.expanded) {
+    @include lines($unit);
+  }
+
+  .z-#{$unit} {
+    z-index: $unit;
+  }
+
+  // w-1 { width: 1 * $size }
+  .w-#{$value} {
+    width: $value !important;
+  }
+
+  .h-#{$value} {
+    height: $value !important;
+  }
+
+  @each $direction in $directions {
+    $direction-initial: nth($direction, 1);
+    $direction: nth($direction, 2);
+
+    .position-#{$direction-initial}-#{$value} {
+      #{$direction}: $value;
+    }
+
+    .position-#{$direction-initial}--#{$value} {
+      #{$direction}: calc(0 - $value);
+    }
+
+    @each $attribute in $spacing-attributes {
+      $attribute-initial: nth($attribute, 1);
+      $attribute: nth($attribute, 2);
+
+      .#{$attribute-initial}#{$direction-initial}-#{$value} {
+        #{$attribute}-#{$direction}: $value !important;
+      }
+    }
+  }
+}
+
+.bg-transparent {
+  background: transparent !important;
+}
+
+
+// found in vendor/bootstrap/custom
+@each $gray in $grays {
+  $color-name: nth($gray, 1);
+  $color-code: nth($gray, 2);
+
+  // text-gray-100 { color: $gray-100 }
+  .text-gray-#{$color-name} {
+    color: $color-code !important;
+  }
+
+  .border-gray-#{$color-name} {
+    border-color: $color-code !important;
+  }
+
+  .bg-gray-#{$color-name} {
+    background-color: $color-code !important;
+  }
+}
+
+// found in vendor/bootstrap/custom
+@each $size in $sizes {
+  $unit: nth($size, 1);
+  $value: nth($size, 2);
+
+  @if $value != auto {
+    // .text-white-#{$unit} {
+    //   color: transparentize($white, ($unit / 10)) !important;
+    // }
+
+    // .bg-white-#{$unit} {
+    //   background: transparentize($white, ($unit / 10)) !important;
+    // }
+
+    // .border-white-#{$unit} {
+    //   border-color: transparentize($white, ($unit / 10)) !important;
+    // }
+
+    .w-#{$value / 1%}vw {
+      width: #{$value / 1%}vw !important;
+    }
+
+    .h-#{$value / 1%}vh {
+      height: #{$value / 1%}vh !important;
+    }
+
+    .max-w-#{$unit} {
+      max-width: $value !important;
+    }
+
+    .max-h-#{$unit} {
+      max-height: $value !important;
+    }
+
+    .max-w-#{$value / 1%}vw {
+      max-width: #{$value / 1%}vw !important;
+    }
+
+    .max-h-#{$value / 1%}vh {
+      max-height: #{$value / 1%}vh !important;
+    }
+
+    .min-w-#{$unit} {
+      min-width: $value !important;
+    }
+
+    .min-h-#{$unit} {
+      min-height: $value !important;
+    }
+
+    .min-w-#{$value / 1%}vw {
+      min-width: #{$value / 1%}vw !important;
+    }
+
+    .min-h-#{$value / 1%}vh {
+      min-height: #{$value / 1%}vh !important;
+    }
+
+    @each $direction in $directions {
+      $direction-initial: nth($direction, 1);
+      $direction: nth($direction, 2);
+
+      .position-#{$direction-initial}-#{$unit} {
+        #{$direction}: $value;
+      }
+
+      .position-#{$direction-initial}--#{$unit} {
+        #{$direction}: calc(0 - $value);
+      }
+    }
+  }
+}
+
+@each $degree in $degrees {
+  .rotate-#{$degree} {
+    transform: rotate(#{$degree}deg) !important;
+  }
+}

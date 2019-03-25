@@ -1,0 +1,59 @@
+$navbar-height:     5rem;
+$sidebar-height:    5rem;
+
+$degrees: 0 45 90 135 180 225 270 315;
+
+$directions: () !default;
+
+$directions: map-merge(
+  (
+    't': 'top',
+    'r': 'right',
+    'b': 'bottom',
+    'l': 'left',
+  ),
+  $directions
+);
+
+
+$spacing-attributes: () !default;
+
+$spacing-attributes: map-merge(
+  (
+    'm': 'margin',
+    'p': 'padding',
+  ),
+  $spacing-attributes
+);
+
+$box-shadow-sm:     .25rem .25rem .25rem $gray-300;
+$box-shadow:        .25rem .25rem .5rem $gray-300;
+$box-shadow-lg:     .25rem .25rem 1rem $gray-300;
+
+
+$base-absolute-size: 1rem !default;
+$absolute-sizes: () !default;
+
+// stylelint-disable-next-line scss/dollar-variable-default
+$absolute-sizes: map-merge(
+  (
+    0: 0,
+    1: ($base-absolute-size * .25),
+    2: ($base-absolute-size * .5),
+    3: $base-absolute-size,
+    4: ($base-absolute-size * 1.5),
+    5: ($base-absolute-size * 2),
+    6: ($base-absolute-size * 3),
+    7: ($base-absolute-size * 4),
+    8: ($base-absolute-size * 5),
+    9: ($base-absolute-size * 6),
+    10: ($base-absolute-size * 7),
+    11: ($base-absolute-size * 8),
+    12: ($base-absolute-size * 9),
+    13: ($base-absolute-size * 10),
+    14: ($base-absolute-size * 11),
+    15: ($base-absolute-size * 12)
+  ),
+  $absolute-sizes
+);
+
