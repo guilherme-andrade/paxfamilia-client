@@ -1,7 +1,7 @@
 <template>
   <b-container>
     <b-row class="mt-2rem mb-2rem">
-      <b-col class="mb-2rem" v-for="report in reports" :key="report" cols="4">
+      <b-col v-for="report in reports" :key="report" class="mb-2rem" cols="4">
         <b-card
           img-src="https://picsum.photos/600/300/?image=25"
           img-alt="Image"
@@ -48,7 +48,6 @@ export default {
         }
       ]
     }
-  },
-  auth: false
+  }
 }
 </script>

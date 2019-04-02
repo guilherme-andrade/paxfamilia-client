@@ -17,8 +17,8 @@ export default {
   },
 
   server: {
-    port: 8000, // default: 3000
-    host: '0.0.0.0', // default: localhost
+    port: 8080, // default: 3000
+    host: '0.0.0.0' // default: localhost
   },
 
   /*
@@ -58,6 +58,23 @@ export default {
     '@nuxtjs/auth'
   ],
 
+  router: {
+    middleware: ['auth']
+  },
+
+  /*
+   ** Axios module configuration
+   */
+  axios: {
+    // See https://github.com/nuxt-community/axios-module#options
+    proxy: true
+  },
+
+
+  proxy: {
+    '/api/': 'http://localhost:3000/',
+  },
+
   auth: {
     redirect: {
       login: '/login',
@@ -68,29 +85,19 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/api/users/login', method: 'post', propertyName: 'token' },
+          login: { url: '/api/users/login', method: 'post', propertyName: 'access_token' },
           logout: { url: '/api/users/logout', method: 'post' },
-          user: { url: '/api/user', method: 'get', propertyName: 'user' }
-        },
+          user: { url: '/api/users/load', method: 'get' }
+        }
       },
-    },
+      tokenRequired: true,
+      tokenType: 'Bearer'
+    }
   },
-
-  router: {
-    middleware: ['auth']
-  },
-
-  /*
-   ** Axios module configuration
-   */
-  axios: {
-    // See https://github.com/nuxt-community/axios-module#options
-  },
-
-  env: {
-    DEV_API: 'http://localhost',
-    PROD_API: '/proxy'
-  },
+  // env: {
+  //   DEV_API: 'http://localhost:3000',
+  //   PROD_API: '/proxy'
+  // },
   /*
    ** Build configuration
    */

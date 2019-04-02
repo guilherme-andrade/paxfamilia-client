@@ -34,6 +34,12 @@
         <br />
         Kanban
       </b-nav-item>
+
+      <b-nav-item to="/report-builder" active-class="active">
+        <font-awesome-icon :icon="['fal', 'file-chart-line']" />
+        <br />
+        Report Builder
+      </b-nav-item>
     </b-navbar-nav>
   </b-navbar>
 </template>

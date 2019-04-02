@@ -20,7 +20,6 @@
 
 <script>
 export default {
-  name: 'App',
-  auth: false
+  name: 'App'
 }
 </script>

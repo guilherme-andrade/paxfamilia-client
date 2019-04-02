@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-highcharts :options="options" ref="lineCharts"></vue-highcharts>
+    <vue-highcharts ref="lineCharts" :options="options"></vue-highcharts>
     <button @click="load">load</button>
   </div>
 </template>
@@ -91,6 +91,7 @@ export default {
       }
     }
   },
+  middleware: 'authenticated',
   methods: {
     load() {
       const lineCharts = this.$refs.lineCharts

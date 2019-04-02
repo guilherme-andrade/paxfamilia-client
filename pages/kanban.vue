@@ -1,13 +1,14 @@
 <template>
-  <kanban></kanban>
+  <div>
+    <board />
+  </div>
 </template>
 
 <script>
-import Kanban from '~/components/kanban'
+import Board from '~/components/kanban/board'
 export default {
   components: {
-    Kanban
-  },
-  auth: false
+    Board
+  }
 }
 </script>

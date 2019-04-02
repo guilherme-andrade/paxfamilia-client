@@ -194,7 +194,6 @@ export default {
       this.totalRows = filteredItems.length
       this.currentPage = 1
     }
-  },
-  auth: false
+  }
 }
 </script>

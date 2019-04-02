@@ -85,6 +85,10 @@
   }
 }
 
+.border-dashed {
+  border-style: dashed !important;
+}
+
 // found in vendor/bootstrap/custom
 @each $size in $sizes {
   $unit: nth($size, 1);
