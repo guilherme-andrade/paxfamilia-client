@@ -21,7 +21,6 @@ export default {
   components: {
     navbar: Navbar,
     sidebar: Sidebar
-  },
-  auth: true
+  }
 }
 </script>

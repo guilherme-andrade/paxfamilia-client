@@ -8,6 +8,72 @@
   object-position: center;
 }
 
+.object-overlay {
+  @include overlay;
+}
+
+.with-overlay {
+  &::after,
+  &::before {
+    @include overlay;
+    content: '';
+    z-index: 1;
+  }
+
+  *:not(.object-overlay) {
+    z-index: 3;
+    position: relative;
+  }
+
+  &.with-overlay-gradient::after {
+    background: linear-gradient(135deg,
+      transparentize($black, 1) 0%,
+      transparentize($black, 1) 30%,
+      transparentize($black, 0.6) 80%,
+      transparentize($black, 0) 100%
+    );
+  }
+
+  &.with-overlay-solid {
+    &::after,
+    &::before {
+      top: auto;
+      bottom: 0;
+      left: auto;
+      right: 0;
+      height: 90%;
+      width: 70%;
+      background: $black;
+      clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    }
+
+    &::before {
+      background: $primary;
+      height: 30%;
+      width: calc((70% * 30) / 90);
+      z-index: 2;
+    }
+  }
+}
+@each $color in $theme-colors {
+  $color-name: nth($color, 1);
+  $color-code: nth($color, 2);
+
+  .with-overlay-badge-#{$color-name} {
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: calc(75% - 5px);
+      left: calc(75% - 5px);
+      width: 10px;
+      height: 10px;
+      background: $color-code;
+      border-radius: 50%;
+    }
+  }
+}
+
 .overflow-y-scroll {
   overflow-y: scroll;
 }
@@ -30,11 +96,11 @@
   }
 
   // w-1 { width: 1 * $size }
-  .w-#{$value} {
+  .w-#{$unit}rem {
     width: $value !important;
   }
 
-  .h-#{$value} {
+  .h-#{$unit}rem {
     height: $value !important;
   }
 
@@ -54,7 +120,7 @@
       $attribute-initial: nth($attribute, 1);
       $attribute: nth($attribute, 2);
 
-      .#{$attribute-initial}#{$direction-initial}-#{$value} {
+      .spacer-#{$attribute-initial}#{$direction-initial}-#{$unit} {
         #{$attribute}-#{$direction}: $value !important;
       }
     }
